@@ -26,4 +26,4 @@ class Greetings extends React.Component {
   }
 }
 
-export default withRouter(Greetings);
+export default withRouter(Greetings); 
