@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import greeting from "./greeting";
-import { logout } from "../../actions/session_actions";
+import { logout, login } from "../../actions/session_actions";
 
 const msp = ({ entities, session }) => {
   // debugger
@@ -10,7 +10,8 @@ const msp = ({ entities, session }) => {
 }
 
 const mdp = (dispatch) => ({
-  logout: () => dispatch(logout())
+  logout: () => dispatch(logout()),
+  login: user => dispatch(login(user))
 })
 
 export default connect(msp, mdp)(greeting);
