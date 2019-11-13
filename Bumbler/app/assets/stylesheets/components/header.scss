@@ -1,0 +1,82 @@
+.home {
+  justify-content: center;
+  margin: auto;
+  // background: rgba(211, 211, 211, 0.1);
+  flex-direction: column;
+  width: 275px;
+  height: 300px;
+  margin-top: 230px;
+  text-align: center;
+  border-radius: 10px;
+  color: white;
+}
+
+body {
+  background-image: image-url('Optimized-d1aehdnbq0h21.jpg');
+  background-size: cover;
+}
+
+.logo {
+  font-weight: 700;
+  font-family: 'Fredoka One', cursive;
+  font-size: 40px;
+  padding-top: 15px;
+  margin-bottom: 40px;
+}
+
+.btn {
+  display: block;
+  background-color: wheat;
+  color: black;
+  font-family: sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 15px;
+  margin-top: 3px;
+  width: 96%;
+  transform: translate(1%, 1%);
+  border-radius: 5px;
+  box-shadow: 2px 4px;
+  border: 2px solid;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.username {
+  border: 2px solid;
+  // margin-top: 3px;
+  background-color: white;
+  width: 96%;
+  height: 30px;
+  border-top-right-radius: 2px;
+  border-top-left-radius: 2px;
+  border-bottom: 1px solid black;
+  caret-color: black;
+  color: black;
+  font-family: sans-serif;
+}
+
+.password {
+  border: 2px solid;
+  background-color: white;
+  width: 96%;
+  height: 30px;
+  border-bottom-right-radius: 2px;
+  border-bottom-left-radius: 2px;
+  caret-color: black;
+  color: black;
+  font-family: sans-serif;
+}
+
+.login {
+  justify-content: center;
+  margin: auto;
+  // background: rgba(211, 211, 211, 0.1);
+  flex-direction: column;
+  width: 275px;
+  height: 155px;
+  margin-top: 230px;
+  text-align: center;
+  border-radius: 10px;
+  color: white;
+}
