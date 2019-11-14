@@ -14,7 +14,8 @@ class Greetings extends React.Component {
       username: "admin1",
       password: "123456"
     }
-    this.props.login(user);
+    this.props.login(user)
+      .then(() => this.props.history.push("/posts"));
   }
 
   render() {

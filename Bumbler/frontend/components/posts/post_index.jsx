@@ -8,15 +8,22 @@ export default class PostIndex extends React.Component {
   }
 
   render() {
-      let postLis = this.props.posts.map(post => {
-        return <PostIndexItem key={post.id} post={post} deletePost={this.props.deletePost} className="pii" />
+      let lis = Object.assign([], this.props.posts.reverse())
+      let postLis = lis.map(post => {
+        return <PostIndexItem key={post.id} currentUser={this.props.currentUser} post={post} deletePost={this.props.deletePost} className="pii" />
       })
     return (
-      <div className="post-ul-div">
-        <ul className="post-ul">
-          {postLis}
-        </ul>
-          {/* ### Add possible link to create new post ### */}
+      <div className="home">
+        <div>
+          <Link to="/posts/new"><button className="post-button">+</button></Link>
+          <button className="logout" onClick={this.props.logout}>Log Out</button>
+        </div>
+        <div className="post-ul-div">
+          <ul className="post-ul">
+            {postLis}
+          </ul>
+            {/* ### Add possible link to create new post ### */}
+        </div>
       </div>
     )
   }
