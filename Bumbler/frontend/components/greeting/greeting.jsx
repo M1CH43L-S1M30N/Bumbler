@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import PostIndexContainer from "../posts/post_index_container";
 
 class Greetings extends React.Component {
   constructor(props) {
@@ -19,8 +20,11 @@ class Greetings extends React.Component {
   render() {
     
     const display = this.props.currentUser ? (
-      <div className="home">
-        <button className="logout" onClick={this.props.logout}>Log Out</button>
+      <div className="index">
+        <div className="home">
+          <button className="logout" onClick={this.props.logout}>Log Out</button>
+        </div>
+        {/* <PostIndexContainer /> */}
       </div>
     ) : (
         <div>

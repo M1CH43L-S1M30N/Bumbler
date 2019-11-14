@@ -111,14 +111,16 @@ body {
 }
 
 .logout {
-  display: block;
-  float: right;
   background-color: wheat;
   width: 60px;
   height: 30px;
   border-bottom-left-radius: 3px;
   font-family: sans-serif;
   text-align: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+
 }
 
 .motto {
