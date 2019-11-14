@@ -10,13 +10,13 @@ import EditPostFormContainer from "./posts/edit_post_form_container";
 
 const App = () => (
   <div>
-    <Route exact path="/" component={GreetingContainer} />
     <Switch>
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
       <ProtectedRoute exact path="/posts" component={PostIndexContainer} />
       <ProtectedRoute exact path="/posts/new" component={CreatePostFormContainer} />
       <ProtectedRoute exact path="/posts/:postId/edit" component={EditPostFormContainer} />
+      <AuthRoute exact path="/" component={GreetingContainer} />
       <Redirect to="/posts" />
     </Switch>
   </div>
