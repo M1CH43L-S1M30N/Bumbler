@@ -14,6 +14,7 @@ export default class PostForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.submitEvent(this.state)
+      .then(() => this.props.closeModal())
       .then(() => this.props.history.push("/posts"));
   };
 
@@ -23,10 +24,7 @@ export default class PostForm extends React.Component {
 
   render() {
     return (
-      <div>
-        <Link to="/posts"><button className="logout">Go back</button></Link>
         <div>
-          <h2>{this.props.formType}</h2>
           <form className="post-form" onSubmit={this.handleSubmit}>
             <label className="post-label">Title:
               <input
@@ -43,10 +41,9 @@ export default class PostForm extends React.Component {
               >
               </textarea>
             </label>
-            <button className="post-form-button">{this.props.formType}</button>
+            <button className="post-form-button" >{this.props.formType}</button>
           </form>
         </div>
-      </div>
     )
   };
 }

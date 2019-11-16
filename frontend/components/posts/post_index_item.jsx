@@ -6,7 +6,7 @@ export default class PostIndexItem extends React.Component {
     if(this.props.currentUser.id === this.props.post.author.id) {
       return (
         <div className="edit-delete">
-          <Link to={`/posts/${this.props.post.id}/edit`}><button>Edit</button></Link>
+          <button onClick={this.props.openModal}>Edit</button>
           <button onClick={() => this.props.deletePost(this.props.post.id)}>❌</button>
         </div>
       )

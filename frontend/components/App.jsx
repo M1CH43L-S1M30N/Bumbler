@@ -4,12 +4,14 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
-import PostIndexContainer from "./posts/post_index_container";
+import PostIndexContainer from "./posts/text_post_index_container";
 import CreatePostFormContainer from "./posts/create_post_form_container";
 import EditPostFormContainer from "./posts/edit_post_form_container";
+import Modal from "./modal/modal";
 
 const App = () => (
   <div>
+    {/* <Modal /> */}
     <Switch>
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />

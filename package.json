@@ -6,6 +6,7 @@
     "@babel/preset-env": "^7.7.1",
     "@babel/preset-react": "^7.7.0",
     "babel-loader": "^8.0.6",
+    "file-loader": "^4.2.0",
     "jquery": "^3.4.1",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
@@ -14,6 +15,7 @@
     "redux": "^4.0.4",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
+    "url-loader": "^2.2.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10"
   },

@@ -1,6 +1,8 @@
+// import React from "react";
 import { connect } from "react-redux";
 import { createPost } from "../../actions/post_actions";
 import PostForm from "./post_form";
+import { openModal, closeModal } from "../../actions/modal_actions";
 
 const msp = (state, ownProps) => {
   return {
@@ -8,7 +10,7 @@ const msp = (state, ownProps) => {
       title: "",
       body: ""
     },
-    formType: "Create Post"
+    formType: "Create Post",
   }
 }
 

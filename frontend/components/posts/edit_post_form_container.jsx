@@ -6,30 +6,28 @@ import { withRouter } from "react-router-dom";
 
 class EditPostForm extends React.Component {
   componentDidMount() {
-    this.props.requestPost(this.props.match.params.postId);
+    this.props.requestPost(this.props.postId);
   }
 
   render() {
     const { post, formType, submitEvent, history } = this.props;
-
     if (!post) return null;
     return (
       <PostForm
       post={post}
       formType={formType}
       submitEvent={submitEvent}
-      history={history}
+      history={this.props.history}
+      closeModal={this.props.closeModal}
       />
     )
   }
 }
 
 const msp = (state, ownProps) => {
-  // 
   return {
-    post: state.posts[ownProps.match.params.postId],
-    formType: "Update Post",
-    history: ownProps.history
+    post: state.entities.posts[ownProps.postId],
+    formType: "Update Post"
   }
 }
 

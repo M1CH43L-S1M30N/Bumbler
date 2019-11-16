@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import PostIndexContainer from "../posts/post_index_container";
+import PostIndexContainer from "../posts/text_post_index_container";
 
 class Greetings extends React.Component {
   constructor(props) {
