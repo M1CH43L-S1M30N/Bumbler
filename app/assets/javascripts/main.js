@@ -147,7 +147,7 @@ var RECEIVE_POST = "RECEIVE_POST";
 
 var receivePost = function receivePost(post) {
   return {
-    type: REMOVE_POST,
+    type: RECEIVE_POST,
     post: post
   };
 };
@@ -893,7 +893,7 @@ function (_React$Component) {
         return _this2.props.closeModal();
       }).then(function () {
         return _this2.props.history.push("/posts");
-      });
+      }); // here lies your problem
     }
   }, {
     key: "update",
@@ -1130,7 +1130,7 @@ function (_React$Component) {
     value: function renderLinks() {
       var _this = this;
 
-      if (this.props.currentUser.id === this.props.post.author.id) {
+      if (this.props.currentUser.id === this.props.post.authorId) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "edit-delete"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -1155,7 +1155,7 @@ function (_React$Component) {
         className: "title-div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "author"
-      }, "@", this.props.post.author.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+      }, "@", this.props.post.authorName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "title"
       }, this.props.post.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "body"

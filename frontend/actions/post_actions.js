@@ -11,7 +11,7 @@ const receivePosts = posts => {
 export const RECEIVE_POST = "RECEIVE_POST";
 const receivePost = post => {
   return {
-    type: REMOVE_POST,
+    type: RECEIVE_POST,
     post
   }
 }

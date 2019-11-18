@@ -16,6 +16,7 @@ export default class PostForm extends React.Component {
     this.props.submitEvent(this.state)
       .then(() => this.props.closeModal())
       .then(() => this.props.history.push("/posts"));
+      // here lies your problem
   };
 
   update(field) {
