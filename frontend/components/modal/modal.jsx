@@ -5,6 +5,7 @@ import CreatePostFormContainer from "../posts/create_post_form_container";
 import PostForm from "../posts/post_form";
 import EditPostFormContainer from "../posts/edit_post_form_container";
 import { requestPost } from "../../actions/post_actions";
+import PhotoPostFormContainer from "../posts/photo_post_form_container";
 
 
 export default class Modal extends React.Component {
@@ -41,16 +42,16 @@ export default class Modal extends React.Component {
   render() {
     let component;
     if(this.state.modalType === "image") {
-      // component = <ImagePostFormContainer />
-      component = <h3 className="bait">🤑Upgrade to premium membership to post pictures🤑</h3>
+      component = <PhotoPostFormContainer />
+      // component = <h3 className="bait">🤑Upgrade to premium membership to post pictures🤑</h3>
     } else if(this.state.modalType === "text") {
       component = <CreatePostFormContainer history={this.props.history} closeModal={this.props.closeModal}/>
     } else if(this.state.modalType === "edit") {
       component = <EditPostFormContainer postId={this.props.editPostId} history={this.props.history} closeModal={this.props.closeModal}/>
     } else if(this.state.modalType === "default") {
       component = <div className="post-picker">
-        <button className="post-icon" onClick={this.chooseText}>📜</button>
-        <button className="post-icon" onClick={this.chooseImage}>🖼</button>
+        <button className="post-icon" onClick={this.chooseText}><img className="txt-icon" src="https://img.icons8.com/ios-filled/150/000000/document.png" alt="img"/></button>
+        <button className="img-post-icon" onClick={this.chooseImage}><img className="pic-icon" src="https://img.icons8.com/ios-filled/100/000000/camera.png" alt="img"/></button>
       </div>
     }
     return (

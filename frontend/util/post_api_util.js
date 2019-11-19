@@ -12,10 +12,21 @@ export const fetchPost = id => {
   });
 };
 
+export const createImagePost = post => {
+
+  return $.ajax({
+    url: "/api/posts",
+    method: "POST",
+    data: post,
+    contentType: false,
+    processData: false
+  })
+}
+
 export const createPost = post => {
   return $.ajax({
-    method: "POST",
     url: "/api/posts",
+    method: "POST",
     data: { post }
   })
 }

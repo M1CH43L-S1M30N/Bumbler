@@ -43,7 +43,7 @@ export default class PostIndex extends React.Component {
     return (
       <div className="home">
         <div>
-          <button className="post-button" onClick={this.openModal()}>+</button>
+          <button className="post-button" onClick={this.openModal()}><img className="plus" src="https://img.icons8.com/ios-filled/100/000000/ball-point-pen.png" alt="pen"/></button>
           <button className="logout" onClick={this.props.logout}>Log Out</button>
         </div>
         <div className="post-ul-div">
