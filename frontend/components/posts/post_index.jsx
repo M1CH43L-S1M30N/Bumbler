@@ -42,9 +42,11 @@ export default class PostIndex extends React.Component {
       }
     return (
       <div className="home">
-        <div>
+        <div className="utility">
+          <div className="logo-2"><Link to="/">Bumbler</Link></div>
+          <Link to={`/users/${this.props.currentUser.id}`} ><button className="profile-pic"><img src={this.props.currentUser.imageUrl} alt="pic" /></button></Link>
           <button className="post-button" onClick={this.openModal()}><img className="plus" src="https://img.icons8.com/ios-filled/100/000000/ball-point-pen.png" alt="pen"/></button>
-          <button className="logout" onClick={this.props.logout}>Log Out</button>
+          <button className="logout" onClick={this.props.logout}><img className="plus" src="https://img.icons8.com/ios-filled/100/000000/logout-rounded-left.png"/></button>
         </div>
         <div className="post-ul-div">
           <ul className="post-ul">
@@ -58,4 +60,3 @@ export default class PostIndex extends React.Component {
   }
 }
 
-// p = Post.new(title: "Future Google employee NBD", body: "If I don't get a job at Google in the next 6 months, I quit. I'll just follow my first passion. Video Games!!", authorId: 5)

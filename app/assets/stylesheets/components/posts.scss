@@ -8,8 +8,9 @@
   font-size: 30px;
   width: 30%;
   text-align: center;
-  border-radius: 10px;
-  margin-top: 80px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  margin-top: 60px;
   box-sizing: border-box;
   height: 850px;
   overflow: hidden;
@@ -18,6 +19,9 @@
 
 .post-ul-div {
   border-radius: 5px;
+  width: 100%;
+  display: flex;
+  margin: auto;
 }
 
 .title {
@@ -98,7 +102,7 @@
   // background: rgba(211, 211, 211, 0.1);
   flex-direction: column;
   width: 350px;
-  height: 275px;
+  height: 350px;
   text-align: center;
   border-radius: 10px;
   color: white;
@@ -106,14 +110,14 @@
 
 .post-button {
   background-color: #e1e1e1;
-  width: 90px;
+  width: 45px;
   height: 45px;
   border-radius: 4px;
   font-family: sans-serif;
   text-align: center;
   position: fixed;
   top: 10px;
-  right: 110px;
+  right: 65px;
   font-size: 40px;
 }
 
@@ -186,7 +190,7 @@
   transform: translate(-50%, -50%);
   height: 180px;
   width: 40%;
-  margin-top: 140px;
+  margin-top: 80px;
 }
 
 .post-picker {
@@ -254,6 +258,99 @@
   width: 100%;
   z-index: -3;
 }
+
+.profile-pic {
+  background-color: #e1e1e1;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  font-family: sans-serif;
+  text-align: center;
+  position: fixed;
+  top: 10px;
+  right: 120px;
+  font-size: 40px;
+  overflow: hidden;
+  border: 2px solid #e1e1e1;
+}
+
+// .user-div {
+//   display: flex;
+// }
+
+.show {
+  background: #001935;
+  width: 100%;
+  height: 100vh;
+  margin: auto;
+}
+
+.user-posts-ul {
+  overflow: hidden;
+  overflow-y: scroll;
+  height: 850px;
+  width: 725px;
+  box-sizing: border-box;
+  margin-top: 60px;
+  text-align: center;
+}
+
+.user-posts-ul-div {
+  background: #001935;
+  margin: auto;
+  width: 50%;
+  // margin-top: 60px;
+  display: flex;
+}
+
+.user-div {
+  margin-top: 90px;
+  width: 320px;
+}
+
+.user-options {
+  color: rgba(255, 255, 255, 0.6);
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  // border-width: thin;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 5px;
+  width: 180px;
+  margin-left: 25px;
+  // text-align: left;
+}
+
+.user-options:hover {
+  color: rgba(255, 255, 255, 1.0);
+  background: darkgray;
+}
+
+.utility {
+  position: absolute;
+  width: 100%;
+  height: 60px;
+  box-sizing: border-box;
+  z-index: 5;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: #001935;
+}
+
+.user-page {
+  height: 100%;
+  width: 100%;
+}
+
+.logo-2 {
+  font-weight: 700;
+  font-family: 'Fredoka One', cursive;
+  font-size: 40px;
+  color: white;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
 // ::-webkit-scrollbar-track {
 //       background-color: #b46868;
 // } 

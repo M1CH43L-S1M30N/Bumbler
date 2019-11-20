@@ -7,17 +7,18 @@ import { AuthRoute, ProtectedRoute } from "../util/route_util";
 import PostIndexContainer from "./posts/text_post_index_container";
 import CreatePostFormContainer from "./posts/create_post_form_container";
 import EditPostFormContainer from "./posts/edit_post_form_container";
-import Modal from "./modal/modal";
+import UserShowContainer from "./users/user_show_container";
 
 const App = () => (
   <div>
-    {/* <Modal /> */}
+    
     <Switch>
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
       <ProtectedRoute exact path="/posts" component={PostIndexContainer} />
       <ProtectedRoute exact path="/posts/new" component={CreatePostFormContainer} />
       <ProtectedRoute exact path="/posts/:postId/edit" component={EditPostFormContainer} />
+      <ProtectedRoute exact path="/users/:userId" component={UserShowContainer} />
       <AuthRoute exact path="/" component={GreetingContainer} />
       <Redirect to="/posts" />
     </Switch>

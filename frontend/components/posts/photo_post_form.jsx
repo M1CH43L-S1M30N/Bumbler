@@ -28,7 +28,9 @@ export default class PhotoPostForm extends React.Component {
     if (this.state.imageFile) {
       formData.append("post[photo]", this.state.imageFile)
     }
-    this.props.createImagePost(formData);
+    this.props.createImagePost(formData)
+      .then(() => this.props.closeModal())
+      .then(() => this.props.history.push("/posts"));
     // create prop
   }
 
@@ -40,7 +42,7 @@ export default class PhotoPostForm extends React.Component {
     return (
       <div>
         <form className="post-form" onSubmit={this.handleSubmit}>
-          <label className="post-label">Title:
+          <label className="post-label">Caption:
             <input type="text" className="title-input" value={this.state.title} onChange={this.update("title")}/>
           </label>
           <label className="post-label">

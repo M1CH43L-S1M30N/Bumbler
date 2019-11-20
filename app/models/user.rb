@@ -2,6 +2,12 @@ class User < ApplicationRecord
 
   validates :username, uniqueness: true
   validates :password, allow_nil: true, length: { minimum: 5 }
+
+  has_one_attached :photo
+  has_many :posts,
+    foreign_key: :authorId,
+    class_name: :Post
+
   #SSPIRE
   attr_reader :password
   after_initialize :ensure_session_token

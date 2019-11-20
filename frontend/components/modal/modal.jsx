@@ -42,7 +42,7 @@ export default class Modal extends React.Component {
   render() {
     let component;
     if(this.state.modalType === "image") {
-      component = <PhotoPostFormContainer />
+      component = <PhotoPostFormContainer postId={this.props.editPostId} history={this.props.history} closeModal={this.props.closeModal}/>
       // component = <h3 className="bait">🤑Upgrade to premium membership to post pictures🤑</h3>
     } else if(this.state.modalType === "text") {
       component = <CreatePostFormContainer history={this.props.history} closeModal={this.props.closeModal}/>

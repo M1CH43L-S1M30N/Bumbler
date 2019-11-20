@@ -28,7 +28,7 @@ class Greetings extends React.Component {
         {/* <PostIndexContainer /> */}
       </div>
     ) : (
-        <div>
+        <div className="splash">
           <button className="demo-login" onClick={this.demoLogin}>Demo</button>
           <div className="get-started">
             <div className="logo-div">
