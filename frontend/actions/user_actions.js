@@ -8,7 +8,20 @@ const receiveUser = user => {
   }
 }
 
+export const RECEIVE_USERS = "RECEIVE_USERS";
+const receiveUsers = users => {
+  return {
+    type: RECEIVE_USERS,
+    users
+  }
+}
+
 export const requestUser = id => dispatch => (
   UserApiUtil.fetchUser(id)
     .then(user => dispatch(receiveUser(user)))
+)
+
+export const requestUsers = () => dispatch => (
+  UserApiUtil.fetchUsers()
+    .then(users => dispatch(receiveUsers(users)))
 )

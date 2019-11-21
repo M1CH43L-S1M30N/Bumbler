@@ -1,18 +1,18 @@
 import * as PostApiUtil from "../util/post_api_util";
 
 export const RECEIVE_POSTS = "RECEIVE_POSTS";
-const receivePosts = posts => {
+const receivePosts = payload => {
   return {
     type: RECEIVE_POSTS,
-    posts
+    payload
   }
 }
 
 export const RECEIVE_POST = "RECEIVE_POST";
-const receivePost = post => {
+const receivePost = payload => {
   return {
     type: RECEIVE_POST,
-    post
+    payload
   }
 }
 
@@ -26,27 +26,27 @@ const removePost = id => {
 
 export const requestPosts = () => dispatch => (
   PostApiUtil.fetchAllPosts()
-    .then(posts => dispatch(receivePosts(posts)))
+    .then(payload => dispatch(receivePosts(payload)))
 );
 
 export const requestPost = id => dispatch => (
   PostApiUtil.fetchPost(id)
-    .then(post => dispatch(receivePost(post)))
+    .then(payload => dispatch(receivePost(payload)))
 )
 
 export const createPost = post => dispatch => (
   PostApiUtil.createPost(post)
-    .then(post => dispatch(receivePost(post)))
+    .then(payload => dispatch(receivePost(payload)))
 )
 
 export const createImagePost = post => dispatch => (
   PostApiUtil.createImagePost(post)
-    .then(post => dispatch(receivePost(post)))
+    .then(payload => dispatch(receivePost(payload)))
 )
 
 export const updatePost = post => dispatch => (
   PostApiUtil.updatePost(post)
-    .then(post => dispatch(receivePost(post)))
+    .then(payload => dispatch(receivePost(payload)))
 )
 
 export const deletePost = id => dispatch => (

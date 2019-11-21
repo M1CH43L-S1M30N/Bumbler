@@ -12,7 +12,7 @@
   border-bottom-right-radius: 10px;
   margin-top: 60px;
   box-sizing: border-box;
-  height: 850px;
+  height: 880px;
   overflow: hidden;
   overflow-y: scroll;
 }
@@ -29,8 +29,8 @@
   font-family: Arial, Helvetica, sans-serif;
   font-size: 30px;
   // background-color: lightgray;
-  border-top-right-radius: 4px;
-  border-top-left-radius: 4px;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
   margin: auto;
   padding-top: 11px;
   padding-bottom: 6px;
@@ -49,22 +49,24 @@
   font-size: 15px;
   background-color: whitesmoke;
   font-family: sans-serif;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .edit-delete {
-  display: flex;
-  justify-content: space-between;
-  width: 12%;
+  font-size: 12px;
+  margin-top: 3px;
+  color: red;
 }
 
 .post-item {
   margin-top: 30px;
   margin-bottom: 30px;
   // opacity: 0.9;
-  border: 4px solid #363636;
-  border-radius: 5px;
+  // border: 4px solid whitesmoke;
+  border-radius: 3px;
   background: whitesmoke;
   //this is where the glow goes
 }
@@ -109,25 +111,25 @@
 }
 
 .post-button {
-  background-color: #e1e1e1;
-  width: 45px;
-  height: 45px;
+  background-color: #00b8ff;
+  width: 55px;
+  height: 35px;
   border-radius: 4px;
   font-family: sans-serif;
   text-align: center;
   position: fixed;
   top: 10px;
-  right: 65px;
+  right: 120px;
   font-size: 40px;
 }
 
 .plus {
-  width: 35px;
+  width: 25px;
   margin: auto;
 }
 
 .post-button:hover {
-  background: darkgray;
+  background: skyblue;
 }
 
 .textarea {
@@ -261,14 +263,14 @@
 
 .profile-pic {
   background-color: #e1e1e1;
-  width: 45px;
-  height: 45px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
   font-family: sans-serif;
   text-align: center;
   position: fixed;
   top: 10px;
-  right: 120px;
+  right: 190px;
   font-size: 40px;
   overflow: hidden;
   border: 2px solid #e1e1e1;
@@ -288,7 +290,7 @@
 .user-posts-ul {
   overflow: hidden;
   overflow-y: scroll;
-  height: 850px;
+  height: 880px;
   width: 725px;
   box-sizing: border-box;
   margin-top: 60px;
@@ -296,7 +298,7 @@
 }
 
 .user-posts-ul-div {
-  background: #001935;
+  // background: whitesmoke;
   margin: auto;
   width: 50%;
   // margin-top: 60px;
@@ -317,8 +319,11 @@
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 5px;
+  padding-right: 5px;
   width: 180px;
   margin-left: 25px;
+  justify-content: space-between;
+  display: flex;
   // text-align: left;
 }
 
@@ -351,15 +356,32 @@
   margin-left: 5px;
 }
 
-// ::-webkit-scrollbar-track {
-//       background-color: #b46868;
-// } 
-// ::-webkit-scrollbar-thumb {
-//       background-color: rgba(0, 0, 0, 0.2);
-// } 
-// ::-webkit-scrollbar-button {
-//       background-color: #7c2929;
-// } 
-// ::-webkit-scrollbar-corner {
-//       background-color: black;
-// } 
+.heart {
+  width: 20px;
+}
+
+.tooltip {
+  visibility: hidden;
+}
+
+.tooltip:hover {
+  visibility: visible;
+}
+
+.likes {
+  font-weight: 700;
+  font-family: 'Courier New', Courier, monospace;
+  margin-top: 3px;
+}
+
+.home-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 4px;
+  font-family: sans-serif;
+  text-align: center;
+  position: fixed;
+  top: 1px;
+  right: 60px;
+  font-size: 40px;
+}

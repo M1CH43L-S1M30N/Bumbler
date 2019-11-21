@@ -13,6 +13,7 @@ export default class PostIndex extends React.Component {
 
   componentDidMount() {
     this.props.requestPosts();
+    this.props.requestUsers();
   }
 
   openModal(id) {
@@ -34,7 +35,7 @@ export default class PostIndex extends React.Component {
 
   render() {
       const postLis = this.props.posts.map(post => {
-        return <PostIndexItem openModal={this.openModal(post.id)} key={post.id} currentUser={this.props.currentUser} post={post} deletePost={this.props.deletePost} className="pii" />
+        return <PostIndexItem createLike={this.props.createLike} deleteLike={this.props.deleteLike} openModal={this.openModal(post.id)} key={post.id} currentUser={this.props.currentUser} post={post} deletePost={this.props.deletePost} className="pii" />
       })
       let modal;
       if (this.state.modalOpen) {
@@ -46,6 +47,7 @@ export default class PostIndex extends React.Component {
           <div className="logo-2"><Link to="/">Bumbler</Link></div>
           <Link to={`/users/${this.props.currentUser.id}`} ><button className="profile-pic"><img src={this.props.currentUser.imageUrl} alt="pic" /></button></Link>
           <button className="post-button" onClick={this.openModal()}><img className="plus" src="https://img.icons8.com/ios-filled/100/000000/ball-point-pen.png" alt="pen"/></button>
+          <Link to="/posts"><button className="home-button"><img src="https://img.icons8.com/cotton/64/000000/home--v1.png" /></button></Link>
           <button className="logout" onClick={this.props.logout}><img className="plus" src="https://img.icons8.com/ios-filled/100/000000/logout-rounded-left.png"/></button>
         </div>
         <div className="post-ul-div">
