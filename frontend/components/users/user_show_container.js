@@ -4,8 +4,10 @@ import { connect } from "react-redux";
 import { requestPosts, deletePost } from "../../actions/post_actions";
 import { logout } from "../../actions/session_actions";
 import { createLike, deleteLike } from "../../actions/like_actions";
+import { createFollow, deleteFollow } from "../../actions/follow_actions";
 
 const msp = (state, ownProps) => {
+  // debugger
   return {
     user: state.entities.users[ownProps.match.params.userId],
     posts: Object.values(state.entities.posts).reverse(),
@@ -21,7 +23,9 @@ const dsp = dispatch => {
     deletePost: id => dispatch(deletePost(id)),
     requestUsers: () => dispatch(requestUsers()),
     createLike: id => dispatch(createLike(id)),
-    deleteLike: id => dispatch(deleteLike(id))
+    deleteLike: id => dispatch(deleteLike(id)),
+    deleteFollow: id => dispatch(deleteFollow(id)),
+    createFollow: id => dispatch(createFollow(id))
   }
 }
 

@@ -86,6 +86,56 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./frontend/actions/follow_actions.js":
+/*!********************************************!*\
+  !*** ./frontend/actions/follow_actions.js ***!
+  \********************************************/
+/*! exports provided: RECEIVE_FOLLOW, REMOVE_FOLLOW, createFollow, deleteFollow */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_FOLLOW", function() { return RECEIVE_FOLLOW; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_FOLLOW", function() { return REMOVE_FOLLOW; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createFollow", function() { return createFollow; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteFollow", function() { return deleteFollow; });
+/* harmony import */ var _util_follow_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/follow_api_util */ "./frontend/util/follow_api_util.js");
+
+var RECEIVE_FOLLOW = "RECEIVE_FOLLOW";
+
+var receiveFollow = function receiveFollow(follow) {
+  return {
+    type: RECEIVE_FOLLOW,
+    follow: follow
+  };
+};
+
+var REMOVE_FOLLOW = "REMOVE_FOLLOW";
+
+var removeFollow = function removeFollow(user) {
+  return {
+    type: REMOVE_FOLLOW,
+    user: user
+  };
+};
+
+var createFollow = function createFollow(id) {
+  return function (dispatch) {
+    return _util_follow_api_util__WEBPACK_IMPORTED_MODULE_0__["createFollow"](id).then(function (follow) {
+      return dispatch(receiveFollow(follow));
+    });
+  };
+};
+var deleteFollow = function deleteFollow(id) {
+  return function (dispatch) {
+    return _util_follow_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteFollow"](id).then(function (user) {
+      return dispatch(removeFollow(user));
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/like_actions.js":
 /*!******************************************!*\
   !*** ./frontend/actions/like_actions.js ***!
@@ -1395,7 +1445,7 @@ function (_React$Component) {
         className: "post-button",
         onClick: this.openModal()
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "plus",
+        className: "pen",
         src: "https://img.icons8.com/ios-filled/100/000000/ball-point-pen.png",
         alt: "pen"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
@@ -1403,13 +1453,13 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "home-button"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "https://img.icons8.com/cotton/64/000000/home--v1.png"
+        src: "https://serfob.s3.amazonaws.com/media/home-icon4cf-15d6-465c-b634-a2c764c822bc.png"
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "logout",
         onClick: this.props.logout
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "plus",
-        src: "https://img.icons8.com/ios-filled/100/000000/logout-rounded-left.png"
+        src: "https://cdn4.iconfinder.com/data/icons/interface-2/100/1-512.png"
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "post-ul-div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
@@ -1541,6 +1591,7 @@ function (_React$Component) {
 
       if (this.state.liked) {
         likeButton = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          title: "unlike",
           className: "heart",
           onClick: this.unlikePost(this.props.post.id)
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -1548,6 +1599,7 @@ function (_React$Component) {
         }));
       } else {
         likeButton = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          title: "like",
           className: "heart",
           onClick: this.likePost(this.props.post.id)
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -1946,6 +1998,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(UserShow).call(this, props));
     _this.state = {
+      loading: true,
       modalOpen: false,
       editPostId: null
     };
@@ -1957,26 +2010,33 @@ function (_React$Component) {
   _createClass(UserShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      var _this2 = this;
+
       this.props.requestUsers();
-      this.props.requestUser(this.props.match.params.userId);
+      this.props.requestUser(this.props.match.params.userId).then(function () {
+        _this2.setState({
+          loading: false,
+          followed: _this2.props.user.followed
+        });
+      });
       this.props.requestPosts();
     }
   }, {
     key: "openModal",
     value: function openModal(id) {
-      var _this2 = this;
+      var _this3 = this;
 
       // e.preventDefault();
       return function (e) {
         e.preventDefault();
 
         if (id) {
-          _this2.setState({
+          _this3.setState({
             modalOpen: true,
             editPostId: id
           });
         } else {
-          _this2.setState({
+          _this3.setState({
             modalOpen: true
           });
         }
@@ -1991,22 +2051,73 @@ function (_React$Component) {
       });
     }
   }, {
+    key: "follow",
+    value: function follow(id) {
+      var _this4 = this;
+
+      return function (e) {
+        _this4.props.createFollow(id).then(function () {
+          _this4.setState({
+            followed: true
+          });
+        });
+      };
+    }
+  }, {
+    key: "unfollow",
+    value: function unfollow(id) {
+      var _this5 = this;
+
+      return function (e) {
+        _this5.props.deleteFollow(id).then(function () {
+          _this5.setState({
+            followed: false
+          });
+        });
+      };
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this6 = this;
+
+      if (this.state.loading) return null;
+      var follow;
+      var blog;
+
+      if (this.state.followed) {
+        follow = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "user-options",
+          onClick: this.unfollow(this.props.user.id)
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Unfollow"));
+        blog = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "user-options-blog"
+        }, "@", this.props.user.username, "'s Blog", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          className: "blog",
+          src: "https://img.icons8.com/flat_round/64/000000/checkmark.png"
+        })));
+      } else {
+        follow = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "user-options",
+          onClick: this.follow(this.props.user.id)
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Follow"));
+        blog = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "user-options-blog"
+        }, "@", this.props.user.username, "'s Blog");
+      }
 
       var posts = this.props.posts.filter(function (post) {
-        return post.authorId === parseInt(_this3.props.match.params.userId);
+        return post.authorId === parseInt(_this6.props.match.params.userId);
       });
       var postLis = posts.map(function (post) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_posts_post_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          createLike: _this3.props.createLike,
-          deleteLike: _this3.props.deleteLike,
-          openModal: _this3.openModal(post.id),
+          createLike: _this6.props.createLike,
+          deleteLike: _this6.props.deleteLike,
+          openModal: _this6.openModal(post.id),
           key: post.id,
-          currentUser: _this3.props.currentUser,
+          currentUser: _this6.props.currentUser,
           post: post,
-          deletePost: _this3.props.deletePost,
+          deletePost: _this6.props.deletePost,
           className: "pii"
         });
       });
@@ -2039,7 +2150,7 @@ function (_React$Component) {
         className: "post-button",
         onClick: this.openModal()
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "plus",
+        className: "pen",
         src: "https://img.icons8.com/ios-filled/100/000000/ball-point-pen.png",
         alt: "pen"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
@@ -2047,13 +2158,13 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "home-button"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "https://img.icons8.com/cotton/64/000000/home--v1.png"
+        src: "https://serfob.s3.amazonaws.com/media/home-icon4cf-15d6-465c-b634-a2c764c822bc.png"
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "logout",
         onClick: this.props.logout
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "plus",
-        src: "https://img.icons8.com/ios-filled/100/000000/logout-rounded-left.png"
+        src: "https://cdn4.iconfinder.com/data/icons/interface-2/100/1-512.png"
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "show"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2062,11 +2173,11 @@ function (_React$Component) {
         className: "user-posts-ul"
       }, postLis), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "user-div"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, blog, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "user-options"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Posts"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, postCount)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "user-options"
-      }, "Followers")))), modal);
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Followers"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.user.followCount)), follow))), modal);
     }
   }]);
 
@@ -2092,6 +2203,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_post_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/post_actions */ "./frontend/actions/post_actions.js");
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
 /* harmony import */ var _actions_like_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../actions/like_actions */ "./frontend/actions/like_actions.js");
+/* harmony import */ var _actions_follow_actions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../actions/follow_actions */ "./frontend/actions/follow_actions.js");
+
 
 
 
@@ -2100,6 +2213,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var msp = function msp(state, ownProps) {
+  // debugger
   return {
     user: state.entities.users[ownProps.match.params.userId],
     posts: Object.values(state.entities.posts).reverse(),
@@ -2129,6 +2243,12 @@ var dsp = function dsp(dispatch) {
     },
     deleteLike: function deleteLike(id) {
       return dispatch(Object(_actions_like_actions__WEBPACK_IMPORTED_MODULE_5__["deleteLike"])(id));
+    },
+    deleteFollow: function deleteFollow(id) {
+      return dispatch(Object(_actions_follow_actions__WEBPACK_IMPORTED_MODULE_6__["deleteFollow"])(id));
+    },
+    createFollow: function createFollow(id) {
+      return dispatch(Object(_actions_follow_actions__WEBPACK_IMPORTED_MODULE_6__["createFollow"])(id));
     }
   };
 };
@@ -2433,7 +2553,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
 /* harmony import */ var _actions_user_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/user_actions */ "./frontend/actions/user_actions.js");
+/* harmony import */ var _actions_follow_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/follow_actions */ "./frontend/actions/follow_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -2451,6 +2573,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
     case _actions_user_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_USERS"]:
       return action.users;
+
+    case _actions_follow_actions__WEBPACK_IMPORTED_MODULE_2__["RECEIVE_FOLLOW"]:
+      return Object.assign({}, state, _defineProperty({}, action.follow.id, action.follow));
+
+    case _actions_follow_actions__WEBPACK_IMPORTED_MODULE_2__["REMOVE_FOLLOW"]:
+      return Object.assign({}, state, _defineProperty({}, action.user.id, action.user));
 
     default:
       return state;
@@ -2484,6 +2612,35 @@ var configureStore = function configureStore() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (configureStore);
+
+/***/ }),
+
+/***/ "./frontend/util/follow_api_util.js":
+/*!******************************************!*\
+  !*** ./frontend/util/follow_api_util.js ***!
+  \******************************************/
+/*! exports provided: createFollow, deleteFollow */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createFollow", function() { return createFollow; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteFollow", function() { return deleteFollow; });
+var createFollow = function createFollow(id) {
+  return $.ajax({
+    method: "POST",
+    url: "/api/follows",
+    data: {
+      id: id
+    }
+  });
+};
+var deleteFollow = function deleteFollow(id) {
+  return $.ajax({
+    method: "DELETE",
+    url: "/api/follows/".concat(id)
+  });
+};
 
 /***/ }),
 

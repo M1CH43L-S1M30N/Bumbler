@@ -118,12 +118,17 @@
   font-family: sans-serif;
   text-align: center;
   position: fixed;
-  top: 10px;
-  right: 120px;
+  top: 12px;
+  right: 150px;
   font-size: 40px;
 }
 
 .plus {
+  width: 70px;
+  // margin: auto;
+}
+
+.pen {
   width: 25px;
   margin: auto;
 }
@@ -269,8 +274,8 @@
   font-family: sans-serif;
   text-align: center;
   position: fixed;
-  top: 10px;
-  right: 190px;
+  top: 12px;
+  right: 230px;
   font-size: 40px;
   overflow: hidden;
   border: 2px solid #e1e1e1;
@@ -327,6 +332,27 @@
   // text-align: left;
 }
 
+.user-options-blog {
+  color: rgba(255, 255, 255, 0.6);
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  // border-width: thin;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  width: 180px;
+  margin-left: 25px;
+  justify-content: space-between;
+  display: flex;
+  // text-align: left;
+}
+
+.blog {
+  width: 18px;
+}
+
 .user-options:hover {
   color: rgba(255, 255, 255, 1.0);
   background: darkgray;
@@ -375,13 +401,13 @@
 }
 
 .home-button {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 4px;
   font-family: sans-serif;
   text-align: center;
   position: fixed;
-  top: 1px;
-  right: 60px;
+  top: 9px;
+  right: 85px;
   font-size: 40px;
 }
