@@ -1297,6 +1297,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(PostIndex).call(this, props));
     _this.state = {
+      loading: true,
       modalOpen: false,
       editPostId: null
     };
@@ -1308,25 +1309,31 @@ function (_React$Component) {
   _createClass(PostIndex, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.requestPosts();
+      var _this2 = this;
+
+      this.props.requestPosts().then(function () {
+        return _this2.setState({
+          loading: false
+        });
+      });
       this.props.requestUsers();
     }
   }, {
     key: "openModal",
     value: function openModal(id) {
-      var _this2 = this;
+      var _this3 = this;
 
       // e.preventDefault();
       return function (e) {
         e.preventDefault();
 
         if (id) {
-          _this2.setState({
+          _this3.setState({
             modalOpen: true,
             editPostId: id
           });
         } else {
-          _this2.setState({
+          _this3.setState({
             modalOpen: true
           });
         }
@@ -1343,17 +1350,18 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this4 = this;
 
+      if (this.state.loading) return null;
       var postLis = this.props.posts.map(function (post) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_post_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          createLike: _this3.props.createLike,
-          deleteLike: _this3.props.deleteLike,
-          openModal: _this3.openModal(post.id),
+          createLike: _this4.props.createLike,
+          deleteLike: _this4.props.deleteLike,
+          openModal: _this4.openModal(post.id),
           key: post.id,
-          currentUser: _this3.props.currentUser,
+          currentUser: _this4.props.currentUser,
           post: post,
-          deletePost: _this3.props.deletePost,
+          deletePost: _this4.props.deletePost,
           className: "pii"
         });
       });
@@ -1529,7 +1537,7 @@ function (_React$Component) {
         likes = "likes";
       }
 
-      var likeButton;
+      var likeButton; // debugger
 
       if (this.state.liked) {
         likeButton = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {

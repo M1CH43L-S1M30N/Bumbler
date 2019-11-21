@@ -52,6 +52,7 @@ export default class PostIndexItem extends React.Component {
       likes = "likes"
     }
     let likeButton;
+    // debugger
     if (this.state.liked) {
       likeButton = <button className="heart" onClick={this.unlikePost(this.props.post.id)}><img src="https://img.icons8.com/officexs/64/000000/hearts.png"/></button>
     } else {

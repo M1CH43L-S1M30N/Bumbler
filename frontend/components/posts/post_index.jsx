@@ -6,13 +6,14 @@ import Modal from "../modal/modal";
 export default class PostIndex extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { modalOpen: false, editPostId: null }
+    this.state = { loading: true, modalOpen: false, editPostId: null }
     this.closeModal = this.closeModal.bind(this);
     this.openModal = this.openModal.bind(this);
   }
 
   componentDidMount() {
-    this.props.requestPosts();
+    this.props.requestPosts()
+      .then(() => this.setState({loading: false}));
     this.props.requestUsers();
   }
 
@@ -34,8 +35,10 @@ export default class PostIndex extends React.Component {
   }
 
   render() {
+    if (this.state.loading) return null;
       const postLis = this.props.posts.map(post => {
-        return <PostIndexItem createLike={this.props.createLike} deleteLike={this.props.deleteLike} openModal={this.openModal(post.id)} key={post.id} currentUser={this.props.currentUser} post={post} deletePost={this.props.deletePost} className="pii" />
+        return <PostIndexItem createLike={this.props.createLike} deleteLike={this.props.deleteLike} openModal={this.openModal(post.id)} key={post.id}
+        currentUser={this.props.currentUser} post={post} deletePost={this.props.deletePost} className="pii" />
       })
       let modal;
       if (this.state.modalOpen) {
