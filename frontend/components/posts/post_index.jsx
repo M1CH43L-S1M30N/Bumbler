@@ -48,8 +48,8 @@ export default class PostIndex extends React.Component {
       <div className="home">
         <div className="utility">
           <div className="logo-2"><Link to="/">Bumbler</Link></div>
-          <Link to={`/users/${this.props.currentUser.id}`} ><button className="profile-pic"><img src={this.props.currentUser.imageUrl} alt="pic" /></button></Link>
           <button className="post-button" onClick={this.openModal()}><img className="pen" src="https://img.icons8.com/ios-filled/100/000000/ball-point-pen.png" alt="pen"/></button>
+          <Link to={`/users/${this.props.currentUser.id}`} ><button className="profile-pic"><img src={this.props.currentUser.imageUrl} alt="pic" /></button></Link>
           <Link to="/posts"><button className="home-button"><img src="https://serfob.s3.amazonaws.com/media/home-icon4cf-15d6-465c-b634-a2c764c822bc.png" /></button></Link>
           <button className="logout" onClick={this.props.logout}><img className="plus" src="https://cdn4.iconfinder.com/data/icons/interface-2/100/1-512.png"/></button>
         </div>

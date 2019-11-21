@@ -1434,14 +1434,7 @@ function (_React$Component) {
         className: "logo-2"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: "/"
-      }, "Bumbler")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-        to: "/users/".concat(this.props.currentUser.id)
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "profile-pic"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.props.currentUser.imageUrl,
-        alt: "pic"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "Bumbler")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "post-button",
         onClick: this.openModal()
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -1449,6 +1442,13 @@ function (_React$Component) {
         src: "https://img.icons8.com/ios-filled/100/000000/ball-point-pen.png",
         alt: "pen"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        to: "/users/".concat(this.props.currentUser.id)
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "profile-pic"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: this.props.currentUser.imageUrl,
+        alt: "pic"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: "/posts"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "home-button"
@@ -2142,17 +2142,17 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
         to: "/"
       }, "Bumbler")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "profile-pic"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.props.currentUser.imageUrl,
-        alt: "pic"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "post-button",
         onClick: this.openModal()
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "pen",
         src: "https://img.icons8.com/ios-filled/100/000000/ball-point-pen.png",
         alt: "pen"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "profile-pic"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: this.props.currentUser.imageUrl,
+        alt: "pic"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
         to: "/posts"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
