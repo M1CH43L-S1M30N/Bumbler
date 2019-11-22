@@ -11,19 +11,19 @@ Besides Login and Signup on the greeting page there is the option for a Demo log
 
 Upon login you are introduced to the first feature of the app. The Post Feed. This page shows all of the posts from different users of the app including the current user.
 
--insert feed gif
+![](Post-Feed.gif)
 
 ### Create Post
 
 By clicking the blue create-post button the user can create a post of his choosing. The created post will then be added to the feed and can be updated or destroyed by the user if he so chooses.
 
-- insert create-post gif
+![](Create-Post.gif)
 
 ### User blog page
 
 By clicking the profile button on the top a user can navigate to their blog page which displays only their posts. While this page is unique to the current user, by clicking on the author name in top left of another user's post you can navigate to that user's blog page.
 
--insert blog page gif
+![](User-Blog.gif)
 
 ### Technologies
 
