@@ -25,15 +25,25 @@ By clicking the profile button on the top a user can navigate to their blog page
 
 ![](User-Blog.gif)
 
-### Technologies
 
-- Backend Languages
-  * Ruby
-  * ReactJS
-  * Redux
-- Frontend Languages
-  * Javascript
+
+### Technologies
+  * Ruby on Rails
+  * JavaScript
   * HTML
-  * CSS
-- Database
+  * SCSS/CSS
   * PostgreSQL
+  
+ ### Libraries
+  * Redux
+  * React.js
+  * jQuery
+  * BCrypt
+  * AWS S3
+ 
+### Features
+ * Post Feed
+ * Creating two types of Posts: Text, Image
+ * Liking and Unliking Posts
+ * Navigating to your Blog Page and other user's Blog Page's
+ * Following and Unfollowing other users
