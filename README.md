@@ -39,8 +39,7 @@ By clicking the profile button on the top a user can navigate to their blog page
   * React.js
   * jQuery
   * BCrypt
-  * AWS S3
-   + I used AWS S3 buckets to store all the images on Bumbler to increase load times
+  * AWS S3 - I used AWS S3 buckets to store all the images on Bumbler to increase load times
  
 ### Features
  * Post Feed
